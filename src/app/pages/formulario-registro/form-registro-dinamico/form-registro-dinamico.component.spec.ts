@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FormRegistroDinamicoComponent } from './form-registro-dinamico.component';
+import {FormRegistroDinamicoComponent} from './form-registro-dinamico.component';
 
 describe('FormRegistroDinamicoComponent', () => {
   let component: FormRegistroDinamicoComponent;
@@ -8,9 +8,9 @@ describe('FormRegistroDinamicoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormRegistroDinamicoComponent ]
+      declarations: [FormRegistroDinamicoComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

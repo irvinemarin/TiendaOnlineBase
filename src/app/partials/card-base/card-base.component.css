@@ -1,0 +1,12 @@
+.mi-card-img-top {
+  height: 100px;
+  width: 100px;
+  horiz-align: center;
+}
+
+#outer {
+  background-color: #ababab;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

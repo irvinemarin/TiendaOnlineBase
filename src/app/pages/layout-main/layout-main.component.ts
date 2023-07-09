@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ActionResultLeftAside} from "../partials/left-aside/left-aside.component";
+import { Component, OnInit } from '@angular/core';
+import { ActionResultLeftAside } from "../../partials/left-aside/left-aside.component";
+import { DataEventNavbar } from 'src/app/partials/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-layout-main',
@@ -8,13 +9,15 @@ import {ActionResultLeftAside} from "../partials/left-aside/left-aside.component
 })
 export class LayoutMainComponent implements OnInit {
 
+  currentTabUrl = "Home"
+
   constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  dataResult: ActionResultLeftAside = {listaProductosSelecteds: []}
+  dataResult: ActionResultLeftAside = { listaProductosSelecteds: [] }
 
   onCategoriasSelected(event: ActionResultLeftAside) {
     this.dataResult = event
@@ -26,6 +29,11 @@ export class LayoutMainComponent implements OnInit {
               (JSON.stringify(v) === JSON.stringify(v2))
             ) === i)
 
+  }
+
+  onNavBarCLickListener(event: DataEventNavbar) {
+    this.currentTabUrl = event.dataResult
+    // alert(this.currentTabUrl + "-- " + event.dataResult)
   }
 
 

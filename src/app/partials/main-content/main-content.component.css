@@ -1,0 +1,98 @@
+.stock-text {
+  font-size: 12px;
+  color: green;
+}
+
+div.greyGridTable {
+  border: 2px solid #FFFFFF;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.divTable.greyGridTable .divTableCell, .divTable.greyGridTable .divTableHead {
+  border: 1px solid #FFFFFF;
+  padding: 3px 4px;
+}
+
+.divTable.greyGridTable .divTableBody .divTableCell {
+  font-size: 13px;
+}
+
+.divTable.greyGridTable .divTableCell:nth-child(even) {
+  background: #ffffff;
+}
+
+.divTable.greyGridTable .divTableHeading {
+  background: #FFFFFF;
+  border-bottom: 4px solid #333333;
+}
+
+.divTable.greyGridTable .divTableHeading .divTableHead {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  border-left: 2px solid #333333;
+}
+
+.divTable.greyGridTable .divTableHeading .divTableHead:first-child {
+  border-left: none;
+}
+
+.greyGridTable .tableFootStyle {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333333;
+  border-top: 4px solid #333333;
+}
+
+.greyGridTable .tableFootStyle {
+  font-size: 14px;
+}
+
+/* DivTable.com */
+.divTable {
+  display: table;
+}
+
+.divTableRow {
+  display: table-row;
+}
+
+.divTableHeading {
+  display: table-header-group;
+}
+
+.divTableCell, .divTableHead {
+  display: table-cell;
+}
+
+.divTableHeading {
+  display: table-header-group;
+}
+
+.divTableFoot {
+  display: table-footer-group;
+}
+
+.divTableBody {
+  display: table-row-group;
+}
+
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1080px) {
+  .modal-dialog {
+    max-width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

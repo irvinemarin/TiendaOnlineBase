@@ -8,79 +8,60 @@
       <br>
       <br>
       <h2>
-        <button
-          (click)="onCancelarFormularioClickListener()"
-          class="btn btn-danger">
-          <i class="bi bi-arrow-left"><--</i>
+        <button (click)="onCancelarFormularioClickListener()" class="btn btn-danger">
           Cancelar
         </button>
-        Registrar {{nombreModelo}}</h2>
+        Registrar {{nombreModelo}}
+      </h2>
       <hr>
-      <!--      {{listaColumnas|json }}-->
+      <!-- {{listaColumnas|json }} -->
       <div class="">
         <div class="col-12 col align-self-center ">
           <div class="row">
-            <div class="mb-3 col-12"
+            <div class="mb-3 col-12" [hidden]="(item.COLUMN_KEY=='PRI' ||item.tipo=='date' ||item.nombre=='estado' ) "
+              *ngFor="let item of listaColumnas;let rowNumber=index">
+              <label class="form-label">
+                {{
+                item["nombre"] == "id_categoria" ? "CATEGORIA" :
+                (item["nombre"] == "parent_id" ? "CATEGORIA SUPERIOR" : item["nombre"])|uppercase
+                }}
+              </label>
 
-                 [hidden]="(item.COLUMN_KEY=='PRI' ||item.tipo=='date' ||item.nombre=='estado' ) "
-                 *ngFor="let item of listaColumnas;let rowNumber=index">
-              <!--              {{item|json}}<br>-->
-
-              <label
-                class="form-label">{{item["nombre"] == "id_categoria" ? "CATEGORIA" : item["nombre"]|uppercase}}</label>
-
-              <select
-                [(ngModel)]="item['valor_columna']"
-                *ngIf="item.nombre=='tipo_unidad'"
-                class="form-select" aria-label="Default select example">
+              <select [(ngModel)]="item['valor_columna']" *ngIf="item.nombre=='tipo_unidad'" class="form-select"
+                aria-label="Default select example">
                 <option value="3">CANTIDAD</option>
                 <option value="1">KILO</option>
                 <option value="2">METRO</option>
 
               </select>
 
-              <select
-                [(ngModel)]="item['valor_columna']"
-                *ngIf="verificarTipoInput(item,'sel')"
-                class="form-select" aria-label="Default select example">
-                <option
-                  *ngFor="let itemCategoria of listaCategorias"
-                  [value]="itemCategoria['id_categoria']"
-                >{{itemCategoria["nombre"]}}</option>
+              <select [(ngModel)]="item['valor_columna']" *ngIf="verificarTipoInput(item,'sel')" class="form-select"
+                aria-label="Default select example">
+                <option *ngFor="let itemCategoria of listaCategorias" [value]="itemCategoria['id_categoria']">
+                  {{itemCategoria["nombre"]}}</option>
               </select>
 
 
-              <select
-                [(ngModel)]="item['valor_columna']"
-                *ngIf="item['nombre']=='parent_id'"
-                class="form-select" aria-label="Default select example">
-                <option
-                  *ngFor="let itemCategoria of listaCategoriasPadres"
-                  [value]="itemCategoria['id_categoria']"
-                >{{itemCategoria["nombre"]}}</option>
+              <select [(ngModel)]="item['valor_columna']" *ngIf="item['nombre']=='parent_id'" class="form-select"
+                aria-label="Default select example">
+                <option *ngFor="let itemCategoria of listaCategoriasPadres" [value]="itemCategoria['id_categoria']">
+                  {{itemCategoria["nombre"]}}</option>
               </select>
 
-              <input
-                [(ngModel)]="item['valor_columna']"
-                *ngIf="verificarTipoInput(item,'inp')"
-                [type]="getTipoDatoInput(item)"
-                class="form-control" aria-describedby="emailHelp">
+              <input [(ngModel)]="item['valor_columna']" *ngIf="verificarTipoInput(item,'inp')"
+                [type]="getTipoDatoInput(item)" class="form-control" aria-describedby="emailHelp">
 
-              <textarea
-                [(ngModel)]="item['valor_columna']"
-                *ngIf="item['max_length']>150 && item['nombre']!='tipo_unidad' "
-                class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              <div
-                *ngIf="
+              <textarea [(ngModel)]="item['valor_columna']"
+                *ngIf="item['max_length']>150 && item['nombre']!='tipo_unidad' " class="form-control"
+                id="exampleFormControlTextarea1" rows="3"></textarea>
+              <div *ngIf="
                 item.nombre!='tipo_unidad'&&
                 item.nombre!='id_categoria' &&
-                item.nombre!='parent_id' "
-                class="form-text">{{  item['valor_columna'].length + "/" + obtenerMaximoInput(item)}}</div>
+                item.nombre!='parent_id' " class="form-text">{{ item['valor_columna'].length + "/" +
+                obtenerMaximoInput(item)}}</div>
             </div>
 
-            <button
-              (click)="onVerifcarFormularioClickListener()"
-              type="submit" class="btn btn-primary">Guardar
+            <button (click)="onVerifcarFormularioClickListener()" type="submit" class="btn btn-primary">Guardar
             </button>
             <!--            {{listaColumnas|json}}-->
           </div>
@@ -94,9 +75,4 @@
   </div>
 </div>
 
-{{listaColumnas|json}}
-
-
-
-
-
+<!-- {{listaColumnas|json}} -->

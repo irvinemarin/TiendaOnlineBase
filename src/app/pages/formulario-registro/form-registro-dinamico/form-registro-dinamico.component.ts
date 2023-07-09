@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ApiPublicService} from "../../rest-apis/public/api-public.service";
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { ApiPublicService } from "../../../rest-apis/public/api-public.service";
+import { ActivatedRoute } from "@angular/router";
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-form-registro-dinamico',
@@ -69,7 +70,6 @@ export class FormRegistroDinamicoComponent implements OnInit {
     this.__ws.getListaCategoriasHijosPublic()
       .subscribe(
         (data: any) => {
-          // let listaTemp=data
           this.listaCategorias = data;
         }
       );
@@ -77,38 +77,49 @@ export class FormRegistroDinamicoComponent implements OnInit {
 
 
   onVerifcarFormularioClickListener() {
-    // saveModel
-
     this.sendSaveModelWS(this.createObjectModel())
-
   }
 
+  error = 0;
   private createObjectModel() {
     let objectJsonString = "{"
-
+    this.error = 0;
     this.listaColumnas.forEach((item, rowNumber) => {
+
+
+      if (item.nombre != "parent_id" && item.valor_columna.length > 0) this.error++
+
       objectJsonString += `"${item.nombre}":"${item.valor_columna}"`
       if (rowNumber < this.listaColumnas.length - 1) {
         objectJsonString += ","
       }
     })
     objectJsonString += `}`
-
-    return JSON.parse(objectJsonString)
+    if (this.error > 0)
+      return JSON.parse(objectJsonString)
+    else return null
   }
-
 
   onCancelarFormularioClickListener() {
 
   }
 
+
   private sendSaveModelWS(body: any) {
+
+    if (body == null) {
+      Swal.fire("Datos Incompletos al guardarDatos")
+      return
+    }
     this.__ws.sendModelSave(this.nombreModelo, body)
       .subscribe(
         (res: any) => {
-          if (res.id > 0) alert("inserted Correct")
+          if (res.id > 0) {
+            this.handlerSuccess(res)
+          }
           else {
-            alert("Error de Ingreso de " + this.nombreModelo)
+            this.handlerError()
+
           }
         }, err => {
           alert(err.message)
@@ -116,6 +127,40 @@ export class FormRegistroDinamicoComponent implements OnInit {
           console.log("complete")
         }
       )
+  }
+
+  handlerError() {
+    Swal.fire("Error al guardarDatos")
+  }
+
+  handlerSuccess(res: any) {
+
+    let timerInterval: string | number | NodeJS.Timeout | undefined;
+    Swal.fire({
+      title: 'Acciones Correctas',
+      html: 'Datos Guardados, recargando pagina',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000);
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
+
+
+
+
+
   }
 
   getTipoDatoInput(item: ItemColumns) {
@@ -168,4 +213,7 @@ export interface ItemColumns {
   tipo: string;
   max_length: number;
   valor_columna: string;
+  IS_NULLABLE: string;
 }
+
+

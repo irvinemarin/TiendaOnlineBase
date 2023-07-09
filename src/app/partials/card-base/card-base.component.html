@@ -1,1 +1,22 @@
-<p>card-base works!</p>
+<div class="card col-12">
+
+  <div id="outer">
+    <img src="assets/imgs/img_default_producto.png" class="mi-card-img-top" alt="...">
+  </div>
+
+
+  <div class="card-body">
+    <h5 class="card-title">{{ItemProducto.nombre}}</h5>
+    <p class="card-text">
+      {{ItemProducto.descripcion}}
+    </p>
+    <p style="font-size: 20px">S/ {{ItemProducto.precio_venta}}</p>
+    <p style="font-size: 12px;color: green">cantidad en stock : {{ItemProducto.stock}}</p>
+    <button
+      (click)="onClickAgregarProducto(ItemProducto)"
+      class="btn btn-success">Agregar al Carrito</button>
+  </div>
+</div>
+
+
+

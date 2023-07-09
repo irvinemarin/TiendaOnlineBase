@@ -1,0 +1,27 @@
+.check-top-left {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+.accordion-item {
+  position: relative !important;
+}
+
+.texto-button-acordion {
+  padding-left: 20px;
+}
+
+.accordion {
+
+  --bs-accordion-btn-padding-x: 5px !important;
+  --bs-accordion-btn-padding-y: 5px !important;
+}
+
+.content-buttons-actions .btn {
+  margin-left: 2px !important;
+}
+
+.accordion-body {
+  padding: 0 !important;
+}
