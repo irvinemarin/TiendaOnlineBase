@@ -1,0 +1,20 @@
+<div class="container">
+
+  <app-nav-bar></app-nav-bar>
+  <div class="row">
+    <hr>
+
+    <div class="col-md-3">
+      <app-left-aside (eventResultAction)="onCategoriasSelected($event)"></app-left-aside>
+    </div>
+    <div class="col-md-9">
+      {{dataResult.listaProductosSelecteds|json}}
+
+      <app-main-content [listaProductos]="dataResult.listaProductosSelecteds"
+
+      ></app-main-content>
+    </div>
+
+
+  </div>
+</div>
