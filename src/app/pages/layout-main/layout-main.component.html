@@ -1,14 +1,12 @@
-<div class="col-12" style="background-color: black; height: 30px;">
-
+<div class="col-12 zshadow-1" style="z-index: 99999999 !important;">
+  <div class="container">
+    <app-nav-bar (change)="onNavBarCLickListener($event)"></app-nav-bar>
+  </div>
 </div>
 
 <div class="container">
 
-  <app-nav-bar (change)="onNavBarCLickListener($event)"></app-nav-bar>
-
-  <div class="row" *ngIf="currentTabUrl=='Home'">
-    <app-home></app-home>
-  </div>
+  <app-home *ngIf="currentTabUrl=='Home'"></app-home>
 
   <div class="row" *ngIf="currentTabUrl=='Vender'">
     <hr>
@@ -19,5 +17,9 @@
       <app-main-content [listaProductos]="dataResult.listaProductosSelecteds"></app-main-content>
     </div>
   </div>
+  <div style="height: 100vh !important;">
+    <app-store-page-main *ngIf="currentTabUrl=='storev2'"></app-store-page-main>
+  </div>
+
 
 </div>

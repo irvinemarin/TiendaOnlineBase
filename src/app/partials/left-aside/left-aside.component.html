@@ -1,13 +1,17 @@
 <h2>Categorias
-  <button type="button"
-          (click)="onClickListenerButton('b001')"
-          class="btn btn-info">Nuevo +
+  <button type="button" (click)="onClickListenerButton('b001')" class="btn btn-info">Nuevo +
   </button>
 </h2>
 <!--<p>  {{listaProductosSelectedDB|json}}</p>-->
 
 <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="content-buttons-actions" *ngIf="countSelectedsItemsCategoria>0">
+
+  <app-BuscadorCategorias  (eventResultAction)="onBuscarFinish($event)"></app-BuscadorCategorias>
+
+  <div class="content-buttons-actions"
+
+
+  *ngIf="countSelectedsItemsCategoria>0">
     <button type="button" class="btn btn-primary">Primary</button>
     <button type="button" class="btn btn-primary">Secondary</button>
     <button type="button" class="btn btn-danger">Success</button>
@@ -31,26 +35,17 @@
     <!--    </div>-->
 
     <div class="accordion" id="accordionExample">
-      <div class="accordion-item"
-           *ngFor="let itemCategoria of ListaCategoriasPadre; let rowNum=index;"
-      >
+      <div class="accordion-item" *ngFor="let itemCategoria of ListaCategoriasPadre; let rowNum=index;">
         <!--        (click)="itemCategoria['isCheckedItem']?itemCategoria['isCheckedItem']=false:itemCategoria['isCheckedItem']=true"-->
-        <h2
+        <h2 class="accordion-header" id="flush-headingOne">
 
-          class="accordion-header" id="flush-headingOne">
-
-          <button class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  [attr.data-bs-target]="'#flush-collapseOne'+rowNum"
-                  aria-expanded="true"
-                  [attr.aria-controls]="'flush-collapseOne'+rowNum">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#flush-collapseOne'+rowNum" aria-expanded="true"
+            [attr.aria-controls]="'flush-collapseOne'+rowNum">
 
             <div class="form-check check-top-left">
-              <input
-                [checked]="itemCategoria['isCheckedItem']"
-
-                class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <input [checked]="itemCategoria['isCheckedItem']" class="form-check-input" type="checkbox" value=""
+                id="flexCheckDefault">
             </div>
             <p class="texto-button-acordion">#{{rowNum + " " + itemCategoria["nombre"] }}</p>
           </button>
@@ -58,18 +53,14 @@
 
 
         <div [id]="'flush-collapseOne'+rowNum" class="accordion-collapse collapse"
-             [attr.aria-labelledby]="'flush-collapseOne'+rowNum"
-             data-bs-parent="#accordionFlushExample">
+          [attr.aria-labelledby]="'flush-collapseOne'+rowNum" data-bs-parent="#accordionFlushExample">
           <div class="accordion-body">
 
 
             <div class="list-group">
-              <label
-                *ngFor="let hijoCat of itemCategoria['ListaCategoriasHijos']; let rowNum=index;"
+              <label *ngFor="let hijoCat of itemCategoria['ListaCategoriasHijos']; let rowNum=index;"
                 class="list-group-item">
-                <input
-                  [checked]="hijoCat['isCheckedItem']"
-                  (change)="onChangeChecked(hijoCat)"
+                <input [checked]="hijoCat['isCheckedItem']" (change)="onChangeChecked(hijoCat)"
                   class="form-check-input me-1" type="checkbox" value="">
                 {{hijoCat.nombre}}
               </label>

@@ -120,7 +120,7 @@
             <option 
            
             [value]="itemVenta.id_venta" *ngFor="let itemVenta of ListaVentasPendientes">
-              @{{itemVenta.cliente + "__"+itemVenta.alias_venta+": "+itemVenta.fecha_venta}}
+              =>{{itemVenta.cliente + "__"+itemVenta.alias_venta+": "+itemVenta.fecha_venta}}
             </option>
 
           </select>
@@ -157,7 +157,7 @@
               <p *ngIf="ClienteData['apellido_pat']"> CLIENTE: {{ClienteData['apellido_pat']+"
                 "+ClienteData['apellido_mat']+", "+ClienteData['nombres']}}
               </p>
-              <p>DNI: {{ClienteData['DNI']}} </p>
+              <p>DNI: {{ ClienteData['DNI'] }} </p>
               <p>TELEFONO: {{ClienteData['telefono']}} </p>
               <!-- <p>ESTADO: {{ClienteData['DNI']}} </p> -->
               <p>MAXIMO CREDITO: {{ClienteData['max_credito']}} </p>
