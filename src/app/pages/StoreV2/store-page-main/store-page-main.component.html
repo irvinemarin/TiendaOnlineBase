@@ -24,7 +24,7 @@
   </section> -->
 
   <header>
-    <h1>Categorías de Productos</h1>
+    <h1>Tienda Charito</h1>
   </header>
 
   <nav>
@@ -34,31 +34,131 @@
     <a href="#">Libros</a>
   </nav>
 
-  <section>
-    <article>
-      <h2>Electrónicos</h2>
-      <p>Productos electrónicos y gadgets.</p>
-      <button>Ver productos</button>
-    </article>
+  <div class="row p-2">
+    <div class="col-4">
+      <div class="d-flex ">
+        <div>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="categoria...">
+        </div>
+        <button (click)="tipoVista='002'" type="button" class="btn btn-primary " style="height: 40px !important;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+            viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+          </svg>
+          Buscar
+        </button>
+      </div>
+    </div>
 
-    <article>
-      <h2>Hogar y Cocina</h2>
-      <p>Artículos para el hogar y utensilios de cocina.</p>
-      <button>Ver productos</button>
-    </article>
+    <div class="col-4">
+      <label>Ordenar Por:</label>
+      <select class="form-select form-select-sm " aria-label="Small select example">
+        <option selected>--Orden Ascendente--</option>
+        <option value="1">Precio Ascendente</option>
+        <option value="2">Precio Descendente</option>
+        <option value="3">Lo mas comprado</option>
+      </select>
+    </div>
 
-    <article>
-      <h2>Ropa</h2>
-      <p>Ropa de moda para hombres y mujeres.</p>
-      <button>Ver productos</button>
-    </article>
 
-    <article>
-      <h2>Libros</h2>
-      <p>Libros de diversos géneros.</p>
-      <button>Ver productos</button>
-    </article>
-  </section>
+    <div class="col-4">
+      <div class="row justify-content-end">
+        <div class="col-auto me-4 mb-4 mt-3">
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+            <button [class.active]="tipoVista=='002'" (click)="tipoVista='002'" type="button"
+              class="btn btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                <path
+                  d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z" />
+              </svg></button>
+            <button [class.active]="tipoVista=='001'" (click)="tipoVista='001'" type="button"
+              class="btn btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-distribute-vertical" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                  d="M1 1.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5m0 13a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5" />
+                <path d="M2 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+              </svg></button>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="container">
+
+
+    <main class="main-cards">
+      <div class="row">
+        <div class="col-md-3">
+          <app-iem-acordion [ListaParentGoblal]="ListaCategoriasPadre"></app-iem-acordion>
+        </div>
+
+        <div class="col-md-8">
+          <div class="row">
+            <div [class.col-md-12]="!ShowProductos" [class.col-md-4]="ShowProductos">
+              <section *ngIf="tipoVista=='001'">
+                <article *ngFor="let item of ListaCategoriasPadre" [class.col-md-12]="ShowProductos">
+                  <h2>{{item.nombre}} </h2>
+                  <p>{{item.descripcion==undefined?"--":item.descripcion}}</p>
+                  <p>
+                    <!-- {{item|json}} -->
+                  </p>
+                  <button (click)="onClickVerCategoriaListener(item)">Ver productos</button>
+                </article>
+              </section>
+              <section *ngIf="tipoVista=='002'">
+                <div class="row">
+                  <div class="col-3" *ngFor="let item of ListaCategoriasPadre" [class.col-md-12]="ShowProductos">
+                    <article>
+                      <h2>{{item.nombre}} </h2>
+                      <p>{{item.descripcion==undefined?"--":item.descripcion}}</p>
+                      <p>
+                        <!-- {{item|json}} -->
+                      </p>
+                      <button (click)="onClickVerCategoriaListener(item)">Ver productos</button>
+                    </article>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="col-md-8" [class.hide]="!ShowProductos">
+              <div class="row">
+                <h4>Lista Productos de : {{categoriaSelected.nombre}} </h4>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="frig">
+        <div class="btn-group">
+          <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
+          <a href="#" class="btn btn-primary">Link</a>
+          <a href="#" class="btn btn-primary">Link</a>
+        </div>
+      </div>
+
+
+
+      <!-- LISTA PDROCUTOS -->
+
+
+
+    </main>
+
+
+  </div>
+
+
 
 
 
@@ -66,3 +166,13 @@
 <footer style="height: 10vh;">
   <p>&copy; 2023 Tienda Online. Todos los derechos reservados.</p>
 </footer>
+
+<!-- <script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+  $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+  })
+
+</script> -->

@@ -1,13 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
 
 .zshadow-1 {
-    box-shadow: -1px 10px 16px -8px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: -1px 10px 16px -8px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 10px 16px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 10px 16px -8px rgba(0, 0, 0, 0.75);
 }
 
 .zshadow-2 {
-    box-shadow: -1px 10px 16px 5px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: -1px 10px 16px 5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 10px 16px 5px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 10px 16px 5px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: -1px 10px 16px 5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 10px 16px 5px rgba(0, 0, 0, 0.75);
+}
+
+/* Estilos para el modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+/* Mostrar el modal cuando la clase is-visible está presente */
+.modal-overlay.is-visible,
+.modal-container.is-visible {
+  display: block;
+}
+
+.modal-container {
+  z-index: 1050;
+  /* O cualquier valor superior según sea necesario */
+}
+
+
+.modal-container {
+  /* ... otros estilos ... */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hide {
+  display: none !important;
+}
+
+
+h5 {
+  text-transform: uppercase !important;
+}
+
+.frig {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.frig-i {
+  position: absolute;
+  right: 10px;
+
+}
+
+.accordion-body {
+  position: relative;
+}
+
+.tooltip_action {
+  background-color: blueviolet;
+  z-index: 99999999999999 !important;
 }

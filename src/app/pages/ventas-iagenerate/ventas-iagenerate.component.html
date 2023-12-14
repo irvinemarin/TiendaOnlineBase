@@ -1,0 +1,148 @@
+<div class="row">
+
+  <div class="col-6">
+
+    <!-- Formulario para agregar nueva categoría -->
+    <div class="container mt-4">
+      <!-- Botón para eliminar datos -->
+      <div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button" id="eliminarDatosDropdown"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Eliminar Datos
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="eliminarDatosDropdown">
+          <li><a class="dropdown-item" href="#" (click)="eliminarDatos()">Eliminar Todo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container mt-4">
+      <form>
+        <div class="mb-3">
+          <label for="nombreCategoria" class="form-label">Nombre de la categoría:</label>
+          <input type="text" id="nombreCategoria" name="nombreCategoria" class="form-control"
+            [(ngModel)]="nuevaCategoria.nombre" />
+        </div>
+        <div class="mb-3">
+          <label for="categoriaPadre" class="form-label">Categoría Padre:</label>
+          <select id="categoriaPadre" name="categoriaPadre" class="form-select" [(ngModel)]="nuevaCategoria.idPadre">
+            <option *ngFor="let categoria of categoriasPadres" [value]="categoria.id">{{ categoria.nombre }}</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="crearCategoria()">Crear Categoría</button>
+      </form>
+    </div>
+    <div class="" style="position: relative !important;">
+      <!-- {{categorias|json}} -->
+      <!-- {{categoriasPadres|json}} -->
+
+      <!-- Lista de categorías -->
+      <div class="container mt-4">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Lista de Categorías
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="eliminarCategoriasDropdown"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Eliminar Datos
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="eliminarCategoriasDropdown">
+              <li><a class="dropdown-item" href="#" (click)="eliminarCategorias()">Eliminar Todo</a></li>
+            </ul>
+          </div>
+        </li>
+        <br>
+
+        <div class="">
+          <div class="isParent" *ngFor="let parent of categoriasPadres">
+            <div style="padding-left: 10px !important;">{{ parent.nombre }}</div>
+            <div class="row  content-btns">
+              <button type="button" class="btn btn-danger " (click)="eliminarCategoria(parent.id)">X</button>
+              <button type="button" class="btn btn-info "
+                (click)="categoriaSeleccionada = parent;obtenerProductosPorCategoria(parent.id)">List
+              </button>
+
+              <button type="button" class="btn btn-close-white " *ngIf="parent.idPadre==-1"
+                (click)="parent['expanded']==true? parent['expanded']=false: parent['expanded']=true">
+                {{parent["expanded"]?"O":"E"}}
+              </button>
+            </div>
+
+            <div class=" content_child isChild" [class.hide]="parent['expanded']==false "
+              *ngFor="let child of parent.categoriasHijos;let rowCount=index">
+              <div>
+                <!-- {{child|json}} -->
+                <div style="padding-left: 10px !important;">{{ "#"+(rowCount+1)+" : "+ child.nombre }}</div>
+
+                <!-- {{ child.idPadre>0? '- Padre: ' + obtenerNombreCategoriaPadre(child.idPadre)
+                : '' }} -->
+
+                <div class="row  content-btns">
+                  <button type="button" class="btn btn-warning " (click)="categoriaSeleccionada = child">ver
+                  </button>
+
+                  <button type="button" class="btn btn-danger " (click)="eliminarCategoria(child.id)">X</button>
+                  <button type="button" class="btn btn-info "
+                    (click)="categoriaSeleccionada = child;obtenerProductosPorCategoria(child.id)">List
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="col-6">
+
+    <!-- Formulario para agregar nuevo producto -->
+    {{obtenerNombreCategoriaPadre(categoriaSeleccionada?.id)}}
+    <div *ngIf="categoriaSeleccionada" class="container mt-4">
+      <form>
+        <div class="mb-3">
+          <label for="nombreProducto" class="form-label">Nombre del producto:</label>
+          <input type="text" id="nombreProducto" name="nombreProducto" class="form-control"
+            [(ngModel)]="nuevoProducto.nombre" />
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="crearProducto()">Crear Producto</button>
+      </form>
+
+      <!-- Lista de productos -->
+      <ul class="list-group mt-3">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Lista de Productos
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="eliminarProductosDropdown"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Eliminar Datos
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="eliminarProductosDropdown">
+              <li><a class="dropdown-item" href="#" (click)="eliminarProductos()">Eliminar Todo</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="list-group mt-3">
+        <li class="list-group-item" *ngFor="let producto of productos">
+          {{ producto.nombre }}
+
+          <div class="row justify-content-end">
+
+            <button type="button" class="btn btn-warning">Editar</button>
+            <button type="button" class="btn btn-danger">Eliminar</button>
+          </div>
+
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+
+</div>

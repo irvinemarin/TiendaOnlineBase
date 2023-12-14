@@ -9,7 +9,7 @@ import { DataEventNavbar } from 'src/app/partials/nav-bar/nav-bar.component';
 })
 export class LayoutMainComponent implements OnInit {
 
-  currentTabUrl = "Vender"
+  currentTabUrl = "storev2"
 
   constructor() {
   }

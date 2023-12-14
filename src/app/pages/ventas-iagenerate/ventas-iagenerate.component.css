@@ -1,0 +1,59 @@
+.isChild {
+  /* padding-left: 40px !important; */
+  background-color: rgb(197, 197, 197);
+  border-top: none !important;
+  position: relative;
+  font-size: 10px;
+}
+
+.isParent {
+  border-bottom: none !important;
+  background-color: rgb(49, 49, 49);
+  /* height: 40px !important; */
+  margin: 0 !important;
+  padding: 0 !important;
+  padding-left: 3px !important;
+  padding-top: 5px !important;
+  /* display: flex !important; */
+  position: relative;
+  color: aliceblue;
+}
+
+.content-btns {
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 12px !important;
+  position: absolute !important;
+  top: 1px !important;
+  right: 0 !important;
+  /* display: flex !important; */
+  width: 100px !important;
+}
+
+.content-btns button {
+  width: 20px !important;
+  height: 15px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 10px !important;
+  font-size: 10px !important;
+
+}
+
+.content_parent {
+  position: relative !important;
+  height: 200px !important;
+  overflow: auto !important;
+}
+
+.content_child {
+  max-height: 40px !important;
+  height: 23px !important;
+  cursor: pointer !important;
+  /* height: 100px; */
+}
+
+.content_child :hover {
+  background-color: antiquewhite;
+  color: black;
+}

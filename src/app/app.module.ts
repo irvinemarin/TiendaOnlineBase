@@ -20,6 +20,9 @@ import es from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import { BuscadorCategoriasComponent } from './partials/BuscadorCategorias/BuscadorCategorias.component';
 import { StorePageMainComponent } from './pages/StoreV2/store-page-main/store-page-main.component';
+import { DemoComponent } from './pages/demo/demo.component';
+import { VentasIAGenerateComponent } from './pages/ventas-iagenerate/ventas-iagenerate.component';
+import { IEMAcordionComponent } from './pages/StoreV2/partials/iem-acordion/iem-acordion.component';
 
 registerLocaleData(es);
 
@@ -35,6 +38,9 @@ registerLocaleData(es);
     HomeComponent,
     BuscadorCategoriasComponent,
     StorePageMainComponent,
+    DemoComponent,
+    VentasIAGenerateComponent,
+    IEMAcordionComponent,
   ],
   imports: [
     HttpClientModule,

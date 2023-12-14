@@ -1,0 +1,35 @@
+.content1 {
+  background-color: black;
+  height: 100vh;
+  color: beige;
+}
+
+.content2 {
+  background-color: rgb(104, 104, 104);
+  height: 100vh;
+  color: beige;
+}
+
+.content3 {
+  background-color: rgb(120, 139, 180);
+  height: 100vh;
+  color: beige;
+  position: relative;
+}
+
+.slideRight {
+  position: absolute;
+  transition-property: background-color, color, left;
+  transition-duration: 5s;
+  -webkit-transition-property: background-color, color, left;
+  -webkit-transition-duration: 5s;
+  -o-transition-property: background-color, color, left;
+  -o-transition-duration: 5s;
+  background-color: red;
+  left: 0%;
+  color: black;
+}
+
+.hide {
+  display: none !important;
+}

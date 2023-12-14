@@ -1,0 +1,13 @@
+<p>demo works!</p>
+<div class="row">
+  <div class="col-2 content1">left</div>
+  <div [class.col-10]="!formularioVisible" [class.col-7]="formularioVisible" class="content2">visible main
+    <button (click)="formularioVisible=true" type="button">
+      ver formulario</button>
+
+  </div>
+  <div [class.hide]="!formularioVisible" class="col-3 content3 hide">oculto
+    <button (click)="onClickCerrarListener()" type="button">
+      cerrar</button>
+  </div>
+</div>
