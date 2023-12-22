@@ -23,6 +23,9 @@ import { StorePageMainComponent } from './pages/StoreV2/store-page-main/store-pa
 import { DemoComponent } from './pages/demo/demo.component';
 import { VentasIAGenerateComponent } from './pages/ventas-iagenerate/ventas-iagenerate.component';
 import { IEMAcordionComponent } from './pages/StoreV2/partials/iem-acordion/iem-acordion.component';
+import { LandingComponent } from './validador-dni/layouts/landing/landing.component';
+import { NavCustomComponent } from './validador-dni/layouts/partials/nav-custom/nav-custom.component';
+import { AsideLeftComponent } from './validador-dni/layouts/partials/aside-left/aside-left.component';
 
 registerLocaleData(es);
 
@@ -41,6 +44,9 @@ registerLocaleData(es);
     DemoComponent,
     VentasIAGenerateComponent,
     IEMAcordionComponent,
+    LandingComponent,
+    NavCustomComponent,
+    AsideLeftComponent,
   ],
   imports: [
     HttpClientModule,

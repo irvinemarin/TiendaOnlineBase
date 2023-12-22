@@ -1,0 +1,133 @@
+<app-nav-custom></app-nav-custom>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <app-aside-left></app-aside-left>
+    </div>
+
+    <div class="col-8">
+
+
+      <!-- <div class="col-12" style="height: 60vh;" frameborder="0">
+
+      </div> -->
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <h5>
+            <br>Verificar personas por dni
+          </h5>
+          <form class="row">
+            <div class="col-auto">
+              <label for="inputPassword2" class="visually-hidden">dni</label>
+              <input type="password" class="form-control" id="inputPassword2" placeholder="48817454">
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary mb-3">buscar..</button>
+            </div>
+          </form>
+        </div>
+
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+              type="button" role="tab" aria-controls="nav-home" aria-selected="true">Resultado busqueda</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+              type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Datos Temporales</button>
+
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"
+            tabindex="0">
+            <br>
+            <!-- error -->
+            <div class="card">
+              <div class="card-content p-4 text-warning">
+                <p class="text-center">--- SIN RESULTADOS ---</p>
+              </div>
+            </div>
+            <br>
+            <div class="card">
+              <div class="card-content p-4">
+                <div class="frig">
+                  <button>guardar persona</button>
+                  <button>x</button>
+                </div>
+                Resultado busqueda
+                <div class="d-flex">
+                  <div style="min-width: 200px;"><b> DNI</b></div>: <span>1231334</span>
+                </div>
+                <div class="d-flex">
+                  <div style="min-width: 200px;"><b> Nombres</b></div>: <span>nombres</span>
+                </div>
+                <div class="d-flex">
+                  <div style="min-width: 200px;"><b> APELLIDO PATERNO</b></div>: <span>apepat</span>
+                </div>
+                <div class="d-flex">
+                  <div style="min-width: 200px;"><b> APELLIDO MATERNO</b></div>: <span>apemat</span>
+                </div>
+                <div class="d-flex">
+                  <div style="min-width: 200px;"><b> FECHA NACIMIENTO</b></div>: <span>date</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+
+
+          </div>
+
+        </div>
+
+        <br>
+        <hr>
+        <div class="row">
+          <div style="position: relative;">
+            <div class="frig">
+
+              <button>guardar en excel</button>
+            </div>
+            <br>
+          </div>
+
+          <H5>datos temporales</H5>
+
+          <div class="divTable cinereousTable">
+            <div class="divTableHeading">
+              <div class="divTableRow">
+                <div class="divTableHead">#</div>
+                <div class="divTableHead">DNI</div>
+                <div class="divTableHead">Nombres</div>
+                <div class="divTableHead">Apellido Paterno</div>
+                <div class="divTableHead">Apellido Materno</div>
+                <div class="divTableHead">Fecha nacimiento</div>
+                <div class="divTableHead">actions</div>
+              </div>
+            </div>
+            <div class="divTableBody" *ngFor="let item of personList">
+              <div class="divTableRow">
+                <div class="divTableCell">1</div>
+                <div class="divTableCell">4879531</div>
+                <div class="divTableCell">lorem impsus</div>
+                <div class="divTableCell">cell4_1</div>
+                <div class="divTableCell">cell5_1</div>
+                <div class="divTableCell">date</div>
+                <div class="divTableCell">
+                  <button>ELIMINAR</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-2">
+      <app-aside-left></app-aside-left>
+    </div> -->
+  </div>
+
+</div>

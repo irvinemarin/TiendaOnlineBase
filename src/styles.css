@@ -84,3 +84,8 @@ h5 {
   background-color: blueviolet;
   z-index: 99999999999999 !important;
 }
+
+
+.bg-dark {
+  color: white !important;
+}

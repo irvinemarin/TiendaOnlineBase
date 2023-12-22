@@ -69,6 +69,7 @@
               <div class="col-6">
                 <span style="font-weight: bolder;">{{cardItem.nombre}}:</span>
                 <br>{{cardItem.descripcion}}
+                {{cardItem["catname"] }}
               </div>
               <div class="col-2"><span class="stock-text">disponible:{{cardItem.stock}}</span></div>
               <div class="col-3">
@@ -117,8 +118,8 @@
             <option value="-1">
               -- SELECCIONE VENTA A PAGAR --
             </option>
-            <option 
-           
+            <option
+
             [value]="itemVenta.id_venta" *ngFor="let itemVenta of ListaVentasPendientes">
               =>{{itemVenta.cliente + "__"+itemVenta.alias_venta+": "+itemVenta.fecha_venta}}
             </option>
