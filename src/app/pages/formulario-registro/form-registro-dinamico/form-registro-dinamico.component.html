@@ -52,13 +52,29 @@
                 [type]="getTipoDatoInput(item)" class="form-control" aria-describedby="emailHelp">
 
               <textarea [(ngModel)]="item['valor_columna']"
-                *ngIf="item['max_length']>150 && item['nombre']!='tipo_unidad' " class="form-control"
-                id="exampleFormControlTextarea1" rows="3"></textarea>
+                *ngIf="item['max_length']>150 && item['nombre']!='tipo_unidad'&& item['nombre']!='imgProducto' "
+                class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               <div *ngIf="
                 item.nombre!='tipo_unidad'&&
+                item.nombre!='imgProducto'&&
                 item.nombre!='id_categoria' &&
                 item.nombre!='parent_id' " class="form-text">{{ item['valor_columna'].length + "/" +
                 obtenerMaximoInput(item)}}</div>
+
+              <div *ngIf="
+                item.nombre=='imgProducto'" class="form-text position-relative">
+                <!-- {{item|json}} -->
+                <button type="button" class="" (click)="selectValueIMGBase64(item)">:</button>
+                <br>
+                <span [class.hide]="estadoCarga==0 "> Render imagen : {{estadoCarga}} .00 %</span>
+                <img [class.hide]="!selectedImage" [src]="selectedImage" alt="" height="200" width="200"
+                  style="margin-left: 20px !important;">
+                <!-- {{ item['valor_columna'].length + "/" +
+                obtenerMaximoInput(item)}} -->
+                <!-- <textarea cols="30" rows="10">{{ imageBlobString }}</textarea> -->
+              </div>
+
+
             </div>
 
             <button (click)="onVerifcarFormularioClickListener()" type="submit" class="btn btn-primary">Guardar

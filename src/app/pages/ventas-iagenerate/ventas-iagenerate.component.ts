@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './api-service.service';
 import { log } from 'console';
+import { ApiService } from './api/api-service.service';
 
 interface Categoria {
   id: number;

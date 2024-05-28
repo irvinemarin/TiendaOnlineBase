@@ -27,6 +27,10 @@ export class ApiPublicService {
     return this.http.get(baseUrl + "listaProductos/" + itemCategoriaElement/*, {headers: headers}*/);
   }
 
+  getListaProductosPublicByNombre(paramText: any) {
+    return this.http.get(baseUrl + "listaProductosByNombre/" + paramText/*, {headers: headers}*/);
+  }
+
   getColumnasByModelo(nombreModelo: string) {
     return this.http.get(baseUrl + "listaColumnasDetails/" + nombreModelo/*, {headers: headers}*/);
   }
@@ -43,7 +47,6 @@ export class ApiPublicService {
 
   getListaCategoriasHijosPublicByParent(id_categoria: any) {
     return this.http.get(baseUrl + "listaCategoriasByParent/" + id_categoria/*, {headers: headers}*/);
-
   }
 
   getListaVentas(estado: string) {
@@ -51,8 +54,6 @@ export class ApiPublicService {
   }
 
   getListaProductosByVentaId(idVenta: any) {
-
     return this.http.get(baseUrl + "listaProductosByID/" + idVenta/*, {headers: headers}*/);
-
   }
 }

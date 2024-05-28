@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+export interface ActionResultItemAcordion {
+  OnSucces: boolean;
+  dataList: any[];
+}
 @Component({
   selector: 'app-iem-acordion',
   templateUrl: './iem-acordion.component.html',
@@ -7,7 +10,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IEMAcordionComponent implements OnInit {
   @Input() ListaParentGoblal = [];
-
+  @Output() eventResultAction = new EventEmitter<ActionResultItemAcordion>();
   isLoadingData = false;
   parenList: ItemIEMAcordion[] = [];
   // selectedFilterList = [];
@@ -33,6 +36,26 @@ export class IEMAcordionComponent implements OnInit {
 
     // alert(this.ListaSelectedCategoriasFiltro.length);
   }
+
+  onClickFiltrarSeleccion(ListHijosTotal: any[]) {
+    let ListHijosFiltrado: any[] = [];
+
+    ListHijosTotal.forEach((element) => {
+      if (element.isChecked) {
+        // alert(JSON.stringify(element));
+        // this.obtenerProductosByCategorioHijoID(element.idItem);
+        ListHijosFiltrado.push({ idItem: element.id_categoria });
+      }
+    });
+
+    let eventData: ActionResultItemAcordion = {
+      OnSucces: true,
+      dataList: ListHijosFiltrado,
+    };
+    this.eventResultAction.emit(eventData);
+  }
+
+  obtenerProductosByCategorioHijoID(idItem: any) {}
 }
 
 export interface ItemIEMAcordion {
@@ -47,8 +70,8 @@ export interface ItemIEMAcordion {
 function settingList(listaGoblal: any[]): any[] {
   let newListFormated: ItemIEMAcordion[] = [];
   listaGoblal.forEach((item) => {
-    console.log('idParent :' + item.id_categoria);
-    console.table(item.ListaCategoriasHijos);
+    // console.log('idParent :' + item.id_categoria);
+    // console.table(item.ListaCategoriasHijos);
 
     let count =
       item.ListaCategoriasHijos == null ? 0 : item.ListaCategoriasHijos.length;

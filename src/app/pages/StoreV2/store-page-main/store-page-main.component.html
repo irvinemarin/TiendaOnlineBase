@@ -1,127 +1,294 @@
-<div style="height: 90vh; background-color: rgb(250, 255, 220);">
-  <!-- <header>
-    <h1>Tienda Online</h1>
-  </header>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    Content for the offcanvas goes here. You can place just about any Bootstrap component or custom elements here.
+  </div>
+</div>
 
-  <nav>
-    <a href="#">Inicio</a> |
-    <a href="#">Productos</a> |
-    <a href="#">Contacto</a>
-  </nav>
-
-  <section>
-    <article>
-      <h2>Producto 1</h2>
-      <p>Descripción del producto 1.</p>
-      <button>Añadir al carrito</button>
-    </article>
-
-    <article>
-      <h2>Producto 2</h2>
-      <p>Descripción del producto 2.</p>
-      <button>Añadir al carrito</button>
-    </article>
-  </section> -->
-
+<div class="contentMainDiv">
   <header>
     <h1>Tienda Charito</h1>
   </header>
 
-  <nav>
-    <a href="#">Electrónicos</a> |
-    <a href="#">Hogar y Cocina</a> |
-    <a href="#">Ropa</a> |
-    <a href="#">Libros</a>
-  </nav>
+  <div class="frig">
+    <div class="btn-group">
+      <a href="#" class="btn btn-primary active" aria-current="page">
 
-  <div class="row p-2">
-    <div class="col-4">
-      <div class="d-flex ">
-        <div>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="categoria...">
-        </div>
-        <button (click)="tipoVista='002'" type="button" class="btn btn-primary " style="height: 40px !important;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-            viewBox="0 0 16 16">
-            <path
-              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-          </svg>
-          Buscar
-        </button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle"
+          viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+          <path fill-rule="evenodd"
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+        </svg>
+        {{!dataLogin.loged?"Ingresar":dataLogin.username}}
+      </a>
+      <a data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+        (click)="configUI.carrito.open=true" *ngIf="dataLogin.loged" class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4"
+          viewBox="0 0 16 16">
+          <path
+            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0" />
+        </svg>
+      </a>
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2"
+        aria-controls="offcanvasExample">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-person-vcard-fill" viewBox="0 0 16 16">
+          <path
+            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9 1.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4a.5.5 0 0 0-.5.5M9 8a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 0-1h-4A.5.5 0 0 0 9 8m1 2.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5m-1 2C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1 1 0 0 0 2 13h6.96q.04-.245.04-.5M7 6a2 2 0 1 0-4 0 2 2 0 0 0 4 0" />
+        </svg>
+      </button>
+
+    </div>
+  </div>
+
+  <!--
+    <div class="contentCustonBack" *ngIf="configUI.carrito.open">
+    <div class="content_left col-6"></div>
+    <div class="content_rightpop col-6">
+      <h5>carrito</h5>
+      <div (click)="configUI.carrito.open=false" class="actionsCarrito">
+        X
       </div>
     </div>
-
-    <div class="col-4">
-      <label>Ordenar Por:</label>
-      <select class="form-select form-select-sm " aria-label="Small select example">
-        <option selected>--Orden Ascendente--</option>
-        <option value="1">Precio Ascendente</option>
-        <option value="2">Precio Descendente</option>
-        <option value="3">Lo mas comprado</option>
-      </select>
     </div>
+  -->
 
 
-    <div class="col-4">
-      <div class="row justify-content-end">
-        <div class="col-auto me-4 mb-4 mt-3">
-          <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <button [class.active]="tipoVista=='002'" (click)="tipoVista='002'" type="button"
-              class="btn btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
-                <path
-                  d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z" />
-              </svg></button>
-            <button [class.active]="tipoVista=='001'" (click)="tipoVista='001'" type="button"
-              class="btn btn-outline-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-distribute-vertical" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M1 1.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5m0 13a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5" />
-                <path d="M2 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
-              </svg></button>
 
+  <div class="row">
+    <div class="col-md-5 col-lg-4 col-xl-2">
+      <br>
+      <h5 class="position-relative">Lista Categorias
+        <div class="frig" style="top  : 0 !important ;">
+          <button type="button" class="btn btn-light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-journal-plus" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5" />
+              <path
+                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
+              <path
+                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
+            </svg>
+          </button>
+        </div>
+      </h5>
+    </div>
+    <div class="col-md-7 col-lg-8 col-xl-10 position-relative">
+      <div class="col-12">
+        <br>
+        <div class="justify-content-center d-flex row ">
+          <div class="col-2">
+            <input (keyup)="onClickBuscarProducto(txtNombreParam.value,true)" type="text" #txtNombreParam
+              class="form-control " id="exampleFormControlInput1" placeholder="producto...">
+          </div>
+          <button (click)="onClickBuscarProducto(txtNombreParam.value,false)" type="button"
+            class="btn btn-primary col-1" style="height: 40px !important;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+              viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+            Buscar
+          </button>
+          <div class="col-2">
+            <label>Ordenar Por:</label>
+            <select class="form-select form-select-sm " aria-label="Small select example">
+              <option selected>--Orden Ascendente--</option>
+              <option value="1">Precio Ascendente</option>
+              <option value="2">Precio Descendente</option>
+              <option value="3">Lo mas comprado</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <div class="row justify-content-end">
+              <div class="col-auto me-4 mb-4 mt-3">
+                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                  <button [class.active]="tipoVista=='002'" (click)="tipoVista='002'" type="button"
+                    class="btn btn-outline-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-grid-fill" viewBox="0 0 16 16">
+                      <path
+                        d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z" />
+                    </svg>
+                  </button>
+                  <button [class.active]="tipoVista=='001'" (click)="tipoVista='001'" type="button"
+                    class="btn btn-outline-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-distribute-vertical" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M1 1.5a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5m0 13a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0-.5.5" />
+                      <path d="M2 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-
       </div>
-    </div>
 
+    </div>
   </div>
 
 
-  <div class="container">
-
-
+  <div class="">
     <main class="main-cards">
       <div class="row">
-        <div class="col-md-3">
-          <app-iem-acordion [ListaParentGoblal]="ListaCategoriasPadre"></app-iem-acordion>
+        <div class="col-md-5 col-lg-4 col-xl-2 left_asideContent">
+          <app-iem-acordion (eventResultAction)="onEventResultActionAcordionFiltro($event)"
+            [ListaParentGoblal]="ListaCategoriasPadre"></app-iem-acordion>
         </div>
+        <div class="col-md-7 col-lg-8 col-xl-10 position-relative">
 
-        <div class="col-md-8">
+          <!-- <h6>Lista Porductos de {{categoriaSelected.nombre}} </h6> -->
+          <!-- <button [class.active]="tipoVista=='001'" (click)="tipoVista='001';onClickAddNewProducto();" type="button"
+            class="btn btn-primary frig">
+            {{"Agregar Producto +"}}
+          </button> -->
+
+          <div class="row d-flex justify-content-center" style="margin-top: 10%;"
+            *ngIf="configUI.busquedaProducto.stateCode==333">
+
+            <div class="card frig p-4 col-4">
+              <div class="row">
+                <h3 class="col-8  text-center">
+
+                  <br>
+                  {{configUI.busquedaProducto.stateText}}
+                </h3>
+                <div class="col-auto">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="126" height="126" fill="currentColor"
+                    class="bi bi-question-diamond-fill text-warning" viewBox="0 0 16 16">
+                    <path
+                      d="M9.05.435c-.58-.58-1.52-.58-2.1 0L.436 6.95c-.58.58-.58 1.519 0 2.098l6.516 6.516c.58.58 1.519.58 2.098 0l6.516-6.516c.58-.58.58-1.519 0-2.098zM5.495 6.033a.237.237 0 0 1-.24-.247C5.35 4.091 6.737 3.5 8.005 3.5c1.396 0 2.672.73 2.672 2.24 0 1.08-.635 1.594-1.244 2.057-.737.559-1.01.768-1.01 1.486v.105a.25.25 0 0 1-.25.25h-.81a.25.25 0 0 1-.25-.246l-.004-.217c-.038-.927.495-1.498 1.168-1.987.59-.444.965-.736.965-1.371 0-.825-.628-1.168-1.314-1.168-.803 0-1.253.478-1.342 1.134-.018.137-.128.25-.266.25zm2.325 6.443c-.584 0-1.009-.394-1.009-.927 0-.552.425-.94 1.01-.94.609 0 1.028.388 1.028.94 0 .533-.42.927-1.029.927" />
+                  </svg>
+                </div>
+              </div>
+              <br>
+
+            </div>
+          </div>
+
+
           <div class="row">
-            <div [class.col-md-12]="!ShowProductos" [class.col-md-4]="ShowProductos">
-              <section *ngIf="tipoVista=='001'">
-                <article *ngFor="let item of ListaCategoriasPadre" [class.col-md-12]="ShowProductos">
-                  <h2>{{item.nombre}} </h2>
-                  <p>{{item.descripcion==undefined?"--":item.descripcion}}</p>
-                  <p>
-                    <!-- {{item|json}} -->
-                  </p>
-                  <button (click)="onClickVerCategoriaListener(item)">Ver productos</button>
-                </article>
-              </section>
-              <section *ngIf="tipoVista=='002'">
-                <div class="row">
-                  <div class="col-3" *ngFor="let item of ListaCategoriasPadre" [class.col-md-12]="ShowProductos">
-                    <article>
-                      <h2>{{item.nombre}} </h2>
-                      <p>{{item.descripcion==undefined?"--":item.descripcion}}</p>
-                      <p>
-                        <!-- {{item|json}} -->
+            <div>
+              <!-- INICIO HORIZONTAL LIST -->
+              <app-horizontal-list-productos [ListaProductosByCategoriasSelected]="ListaProductosByCategoriasSelected"
+                *ngIf="tipoVista=='001'" class="mt-3">
+                <article *ngFor="let itemProducto of ListaProductosByCategoriasSelected" class="mb-2"
+                  [class.col-md-12]="ShowProductos">
+                  <!-- <p>{{itemProducto|json}} </p> -->
+                  <div class="row p-2">
+                    <div class="col-5">
+                      <div class="row">
+                        <div class="col-3" style="text-align: left; margin-top: 0 !important;">
+                          <img *ngIf="itemProducto.imgProducto" [src]="itemProducto.imgProducto" height="80" width="80">
+                          <img *ngIf="!itemProducto.imgProducto"
+                            [src]="'../../../../assets/imgs/img_default_producto.png'" height="80" width="auto">
+                        </div>
+                        <div class="col-7" style="text-align: left;">
+                          <h5>
+                            {{itemProducto.nombre}}
+                          </h5>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <br>
+                      <p class="position-relative">
+                        <span
+                          class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-success ">x{{itemProducto.stock}}
+                        </span>
+                        <span class="badge rounded-pill bg-info ">
+                          {{itemProducto.catname}}
+                        </span>
+                        <br>
+                        <span class="badge rounded-pill bg-black ">
+                          {{itemProducto.catNameParent}}
+                        </span>
                       </p>
-                      <button (click)="onClickVerCategoriaListener(item)">Ver productos</button>
+                    </div>
+
+                    <div class="col-md-3">
+                      <p style="text-align: left;">
+                        {{itemProducto.descripcion}} //
+                        {{itemProducto.codigo_barras}}
+                      </p>
+                    </div>
+                    <div class="col-1">
+                      <h5 class="text-success">S/{{itemProducto.precio_venta}} </h5>
+                    </div>
+                    <div class="col-1">
+
+                      <div class="input-group mb-1">
+                        <button class="btn btn-secondary" type="button" id="button-addon1">-</button>
+                        <input type="number" class="form-control" placeholder=""
+                          [(ngModel)]="itemProducto.dataCarrito['count']"
+                          style="text-decoration: none  !important; text-align: center !important;"
+                          aria-label="Example text with button addon" [value]="!itemProducto.dataCarrito['count']?0:1 "
+                          aria-describedby="button-addon1">
+                        <button class="btn btn-secondary" type="button" id="button-addon2">+</button>
+                      </div>
+                      <button (click)="onClickVerCategoriaListener(itemProducto)">Carrito +</button>
+                    </div>
+                  </div>
+                </article>
+              </app-horizontal-list-productos>
+              <!-- FIN HORIZONTAL LIST -->
+              <section *ngIf="tipoVista=='002'" class="">
+                <!--CARDS -->
+                <div class="row">
+                  <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-2"
+                    *ngFor="let itemProducto of ListaProductosByCategoriasSelected" [class.col-md-12]="ShowProductos">
+                    <article style="min-height: 300px !important;" class="mb-4">
+                      <!-- <h2>{{itemProducto|json}} </h2> -->
+                      <div class="col-12" style="background-color: darkgray;">
+                        <img *ngIf="itemProducto.imgProducto" [src]="itemProducto.imgProducto" height="150"
+                          width="auto">
+
+                        <img *ngIf="!itemProducto.imgProducto"
+                          [src]="'../../../../assets/imgs/img_default_producto.png'" height="150" width="auto">
+                      </div>
+                      <h5 class="position-relative placeholder-glow">
+                        <br>
+                        {{itemProducto.nombre}} <span
+                          class="position-absolute top-0 start-90 translate-middle badge rounded-pill bg-success ">
+                          stock: x{{itemProducto.stock}}
+                        </span>
+                      </h5>
+
+                      <h2 class="text-success">S/{{itemProducto.precio_venta}}</h2>
+                      <!-- <p>{{itemProducto.descripcion}}</p> -->
+                      <!-- <p>{{itemProducto.codigo_barras}}</p> -->
+                      <p>
+                        <span class="badge rounded-pill bg-info ">
+                          {{itemProducto.catname}}
+                        </span>
+                        <br>
+                        <span class="badge rounded-pill bg-black ">
+                          {{itemProducto.catNameParent}}
+                        </span>
+                      </p>
+                      <div class="d-flex justify-content-center">
+                        <div class="input-group mb-1 " style="max-width: 120px !important;">
+                          <button class="btn btn-secondary" type="button" id="button-addon1">-</button>
+                          <input type="number" class="form-control" placeholder=""
+                            [(ngModel)]="itemProducto.dataCarrito['count']"
+                            style="text-decoration: none  !important; text-align: center !important;"
+                            aria-label="Example text with button addon"
+                            [value]="!itemProducto.dataCarrito['count']?0:1 " aria-describedby="button-addon1">
+                          <button class="btn btn-secondary" type="button" id="button-addon2">+</button>
+                        </div>
+                      </div>
+
+                      <button (click)="onClickVerCategoriaListener(itemProducto)">Carrito +</button>
+                      <br>
+                      <br>
                     </article>
                   </div>
                 </div>
@@ -138,41 +305,163 @@
         </div>
 
       </div>
-
-      <div class="frig">
-        <div class="btn-group">
-          <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
-          <a href="#" class="btn btn-primary">Link</a>
-          <a href="#" class="btn btn-primary">Link</a>
-        </div>
-      </div>
-
-
-
-      <!-- LISTA PDROCUTOS -->
-
-
-
+      <br>
+      <br>
     </main>
-
-
   </div>
 
 
 
 
 
+
+
+
 </div>
-<footer style="height: 10vh;">
+<footer style="height: 10vh; z-index: 200;">
   <p>&copy; 2023 Tienda Online. Todos los derechos reservados.</p>
 </footer>
 
-<!-- <script>
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
-  $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-  })
 
-</script> -->
+
+
+
+<div class="offcanvas offcanvas-end " style="width: 40% !important;" tabindex="-1" id="offcanvasExample2"
+  aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Clientes</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- <div class="offcanvas-body" style="font-family: 'Courier New', Courier, monospace;"> -->
+  <div class="offcanvas-body">
+    <div>
+      <style>
+        .table_component {
+          overflow: auto;
+          width: 100%;
+        }
+
+        .table_component table {
+          border: 1px solid #dededf;
+          height: 100%;
+          width: 100%;
+          table-layout: fixed;
+          border-collapse: collapse;
+          border-spacing: 1px;
+          text-align: left;
+        }
+
+        .table_component caption {
+          caption-side: top;
+          text-align: left;
+        }
+
+        .table_component th {
+          border: 1px solid #dededf;
+          background-color: #eceff1;
+          color: #000000;
+          padding: 5px;
+          font-size: 11 !important;
+        }
+
+        .table_component td {
+          border: 1px solid #dededf;
+          background-color: #ffffff;
+          color: #000000;
+          padding: 5px;
+        }
+
+        .rowcount {
+          max-width: 50px !important;
+          font-size: 11 !important;
+          width: 50px !important;
+        }
+
+        .largeColumn {
+          font-size: 11 !important;
+          max-width: 200px !important;
+          width: 200px !important;
+        }
+
+        .smallColumn {
+          text-align: center;
+          font-size: 11 !important;
+          max-width: 100px !important;
+          width: 100px !important;
+        }
+      </style>
+      <div class="table_component" role="region" tabindex="0">
+        <table>
+          <caption>Ultimos Clientes</caption>
+          <thead>
+            <tr>
+              <th class="rowcount">#</th>
+              <th class="largeColumn">Nombres</th>
+              <th>Max credito</th>
+              <th>Fecha Registro</th>
+              <th class="smallColumn">% Quejas</th>
+              <th>options </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listClientes;let RowCount=index">
+              <td class="rowcount">
+                {{RowCount+1}}
+              </td>
+              <td class="largeColumn">
+                {{item.apellido_pat}}
+                {{item.apellido_mat}},
+                {{item.nombres}}
+              </td>
+              <td>
+                S/{{item.max_credito}}
+              </td>
+              <td>
+                {{item.fecha_registro | date}}
+              </td>
+              <td class="smallColumn">
+                0.1./5.00
+              </td>
+
+              <td>
+                <span>
+                  <button type="button" class="btn btn-light" style="font-size: 8px;">
+                    <span>Historial</span>
+                    <br>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-clock-history" viewBox="0 0 16 16">
+                      <path
+                        d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022zm2.004.45a7 7 0 0 0-.985-.299l.219-.976q.576.129 1.126.342zm1.37.71a7 7 0 0 0-.439-.27l.493-.87a8 8 0 0 1 .979.654l-.615.789a7 7 0 0 0-.418-.302zm1.834 1.79a7 7 0 0 0-.653-.796l.724-.69q.406.429.747.91zm.744 1.352a7 7 0 0 0-.214-.468l.893-.45a8 8 0 0 1 .45 1.088l-.95.313a7 7 0 0 0-.179-.483m.53 2.507a7 7 0 0 0-.1-1.025l.985-.17q.1.58.116 1.17zm-.131 1.538q.05-.254.081-.51l.993.123a8 8 0 0 1-.23 1.155l-.964-.267q.069-.247.12-.501m-.952 2.379q.276-.436.486-.908l.914.405q-.24.54-.555 1.038zm-.964 1.205q.183-.183.35-.378l.758.653a8 8 0 0 1-.401.432z" />
+                      <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0z" />
+                      <path
+                        d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5" />
+                    </svg>
+                  </button>
+                </span>
+                <span>
+                  <button type="button" class="btn btn-light" style="font-size: 8px;">
+                    <span>Detalle</span>
+                    <br>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-journal-text" viewBox="0 0 16 16">
+                      <path
+                        d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
+                      <path
+                        d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
+                      <path
+                        d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
+                    </svg>
+                  </button>
+                </span>
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

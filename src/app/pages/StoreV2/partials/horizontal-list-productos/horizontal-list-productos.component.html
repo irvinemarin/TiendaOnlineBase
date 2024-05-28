@@ -1,0 +1,58 @@
+<section>
+  <article *ngFor="let itemProducto of ListaProductosByCategoriasSelected" class="mb-2">
+    <!-- <p>{{itemProducto|json}} </p> -->
+    <div class="row p-2">
+      <div class="col-5">
+        <div class="row">
+          <div class="col-3" style="text-align: left; margin-top: 0 !important;">
+            <img *ngIf="itemProducto.imgProducto" [src]="itemProducto.imgProducto" height="80" width="80">
+            <img *ngIf="!itemProducto.imgProducto" [src]="'../../../../assets/imgs/img_default_producto.png'"
+              height="80" width="auto">
+          </div>
+          <div class="col-7" style="text-align: left;">
+            <h5>
+              {{itemProducto.nombre}}
+            </h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <br>
+        <p class="position-relative">
+          <span
+            class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-success ">x{{itemProducto.stock}}
+          </span>
+          <span class="badge rounded-pill bg-info ">
+            {{itemProducto.catname}}
+          </span>
+          <br>
+          <span class="badge rounded-pill bg-black ">
+            {{itemProducto.catNameParent}}
+          </span>
+        </p>
+      </div>
+
+      <div class="col-md-3">
+        <p style="text-align: left;">
+          {{itemProducto.descripcion}} //
+          {{itemProducto.codigo_barras}}
+        </p>
+      </div>
+      <div class="col-1">
+        <h5 class="text-success">S/{{itemProducto.precio_venta}} </h5>
+      </div>
+      <div class="col-1">
+
+        <div class="input-group mb-1">
+          <button class="btn btn-secondary" type="button" id="button-addon1">-</button>
+          <input type="number" class="form-control" placeholder="" [(ngModel)]="itemProducto.dataCarrito['count']"
+            style="text-decoration: none  !important; text-align: center !important;"
+            aria-label="Example text with button addon" [value]="!itemProducto.dataCarrito['count']?0:1 "
+            aria-describedby="button-addon1">
+          <button class="btn btn-secondary" type="button" id="button-addon2">+</button>
+        </div>
+        <button (click)="onClickVerCategoriaListener(itemProducto)">Carrito +</button>
+      </div>
+    </div>
+  </article>
+</section>

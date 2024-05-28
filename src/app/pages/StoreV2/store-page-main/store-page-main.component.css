@@ -20,14 +20,14 @@ nav {
 }
 
 section {
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 article {
   background-color: #fff;
   border: 1px solid #ddd;
   /* margin: 10px; */
-  padding: 20px;
+  /* padding: 20px; */
   text-align: center;
 }
 
@@ -39,11 +39,60 @@ footer {
 }
 
 .main-cards {
-  height: 70vh !important;
+  height: 80vh !important;
   overflow: auto !important;
+  max-height: 80vh !important;
 }
 
 .list-group-item {
   padding: 0 !important;
 }
 
+.contentMainDiv {
+  height: 90vh;
+  background-color: rgb(202, 202, 202);
+}
+
+.content_rightpop {
+  background-color: #e3eefd;
+  height: 100vh;
+  right: 0;
+  top: 0;
+  position: absolute;
+  z-index: 101;
+  width: 30vw;
+}
+
+.contentCustonBack {
+  z-index: 100;
+  position: absolute;
+  /* background-color: aqua; */
+  height: 100vh;
+  width: 100vw;
+  left: 0;
+  top: 0;
+  background-color: #29292973
+}
+
+.actionsCarrito {
+  right: 40px;
+  top: 0;
+  font-size: 25px;
+  position: absolute;
+  cursor: pointer;
+
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.left_asideContent {
+  overflow: auto !important;
+  background-color: #333;
+  height: 100%;
+}

@@ -9,13 +9,13 @@ import { VentasIAGenerateComponent } from './pages/ventas-iagenerate/ventas-iage
 import { StoreV2Component } from './pages/StoreV2/store-v2/store-v2.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/ValidadorDNI', pathMatch: 'full' },
+  { path: '', redirectTo: '/StoreV2', pathMatch: 'full' },
   { path: 'main', component: LayoutMainComponent },
   { path: 'demo', component: DemoComponent },
   { path: 'reg/:model', component: FormRegistroDinamicoComponent },
   { path: 'StoreV2', component: StorePageMainComponent },
-  { path: 'StoreV3', component: VentasIAGenerateComponent },
-  { path: 'ValidadorDNI', component: LandingComponent },
+  // { path: 'StoreV3', component: VentasIAGenerateComponent },
+  // { path: 'ValidadorDNI', component: LandingComponent },
 ];
 
 @NgModule({

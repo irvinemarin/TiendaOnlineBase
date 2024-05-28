@@ -1,5 +1,7 @@
 import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 import { ApiPublicService } from 'src/app/rest-apis/public/api-public.service';
+import { ActionResultItemAcordion } from '../partials/iem-acordion/iem-acordion.component';
+import { log } from 'console';
 declare var bootstrap: any;
 
 @Component({
@@ -8,28 +10,17 @@ declare var bootstrap: any;
   styleUrls: ['./store-page-main.component.css'],
 })
 export class StorePageMainComponent implements OnInit {
-  ListaCategoriasPadre: ItemCategoria[] = [
-    // {
-    //   nombre: 'Electrodomesticos 1',
-    //   descripcion: 'lorem impsus... asdasd adf.... adfafd...',
-    //   code: 'CATP0001',
-    // },
-    // {
-    //   nombre: 'Electrodomesticos 2',
-    //   descripcion: 'lorem impsus... asdasd adf.... adfafd...',
-    //   code: 'CATP0001',
-    // },
-    // {
-    //   nombre: 'Electrodomesticos 3',
-    //   descripcion: 'lorem impsus... asdasd adf.... adfafd...',
-    //   code: 'CATP0001',
-    // },
-    // {
-    //   nombre: 'Electrodomesticos 4',
-    //   descripcion: 'lorem impsus... asdasd adf.... adfafd...',
-    //   code: 'CATP0001',
-    // },
-  ];
+  ListaCategoriasPadre: ItemCategoria[] = [];
+
+  configUI = {
+    carrito: {
+      open: false,
+    },
+    busquedaProducto: {
+      stateText: 'seleccione una categoria o busque un producto',
+      stateCode: 333,
+    },
+  };
 
   ListaHijos: any[] = [
     { idItem: 'IH001', title: 'Mi Item Title', count: 20 },
@@ -42,6 +33,10 @@ export class StorePageMainComponent implements OnInit {
       count: 90,
     },
   ];
+  dataLogin = {
+    loged: true,
+    username: 'Adminstrador',
+  };
 
   ShowProductos = false;
   categoriaSelected: any = {};
@@ -54,9 +49,8 @@ export class StorePageMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.obntenerListaCategoriasPadre();
+    this.obntenerListaClientes();
   }
-
-  private tooltipList = new Array<any>();
 
   @Input() placement = 'top';
   @Input() appTooltip = '';
@@ -77,18 +71,64 @@ export class StorePageMainComponent implements OnInit {
   }
 
   onClickVerCategoriaListener(ItemCategoria: ItemCategoria) {
-    this.ShowProductos = true;
-    this.categoriaSelected = ItemCategoria;
+    // this.ShowProductos = true;
+    // this.categoriaSelected = ItemCategoria;
+  }
+
+  toastTrigger = document.getElementById('liveToastBtn');
+  toastLiveExample = document.getElementById('liveToast');
+
+  renderImageFromBytes(itemProducto: any) {
+    if (itemProducto.imgProducto == null) return;
+    return this.convertToByteArray(itemProducto.imgProducto.data, itemProducto);
+  }
+
+  private convertToByteArray(
+    dataUrl: string | ArrayBuffer | null,
+    itemProducto: any
+  ) {
+    if (typeof dataUrl === 'string') {
+      const byteString = atob(dataUrl.split(',')[1]);
+      const byteArray = new Uint8Array(byteString.length);
+      for (let i = 0; i < byteString.length; i++) {
+        byteArray[i] = byteString.charCodeAt(i);
+      }
+      itemProducto.selectedImage = '';
+      itemProducto.mimeType = 'image/jpeg';
+      itemProducto.byteArray = byteArray;
+      return this.renderImageFromBytesFinal(
+        byteArray,
+        itemProducto.mimeType,
+        itemProducto
+      );
+    } else {
+      return;
+    }
+  }
+
+  private renderImageFromBytesFinal(
+    byteArray: Uint8Array,
+    mimeType: string | null,
+    itemProducto: any
+  ) {
+    let url;
+    if (mimeType) {
+      const blob = new Blob([byteArray], { type: mimeType });
+      url = URL.createObjectURL(blob);
+      itemProducto.selectedImage = url;
+    }
+    return url;
   }
 
   private obntenerListaCategoriasPadre() {
-    alert('obntenerListaCategoriasPadre');
+    // alert('obntenerListaCategoriasPadre');
     this.__ws.getListaCategoriasHijosPublicByParent('0').subscribe(
       (res: any) => {
         this.ListaCategoriasPadre = res;
         this.ListaCategoriasPadre.forEach((item: any) => {
           // item['isCheckedItem'] = false;
           item.id_categoria = 'CATP_' + item['id_categoria'];
+          item['ListaCategoriasHijos'] = [];
           this.obntenerListaCategoriasHijos(item);
           // this.obntenerListaCategoriasHijos(item);
         });
@@ -120,6 +160,41 @@ export class StorePageMainComponent implements OnInit {
     );
   }
 
+  DataFiltro: any[] = [];
+  onEventResultActionAcordionFiltro(event: ActionResultItemAcordion) {
+    this.ListaProductosByCategoriasSelected = [];
+    this.DataFiltro = event.dataList;
+    event.dataList.forEach((element) => {
+      this.obntenerListaProductosByCategoria(element.idItem);
+    });
+  }
+
+  ListaProductosByCategoriasSelected: any[] = [];
+
+  private obntenerListaProductosByCategoria(id: number) {
+    let tempList: any[] = [];
+    this.__ws.getListaProductosPublic(id).subscribe(
+      (res: any) => {
+        res.forEach((element: any) => {
+          element.dataCarrito = {
+            count: 0,
+          };
+          this.ListaProductosByCategoriasSelected.push(element);
+          this.categoriaSelected.name = element.catName;
+        });
+        this.configUI.busquedaProducto.stateCode = 200;
+      },
+      (err) => {
+        alert(err);
+      },
+      () => {}
+    );
+  }
+
+  onClickAddNewProducto() {
+    // this.ListaSelectedCategoriasFiltro[0].
+  }
+
   ListaSelectedCategoriasFiltro: any[] = [];
   onChangeCategoriaSelectedListener(item: any) {
     if (!item.isChecked) {
@@ -130,6 +205,51 @@ export class StorePageMainComponent implements OnInit {
     }
 
     // alert(this.ListaSelectedCategoriasFiltro.length);
+  }
+
+  onClickBuscarProducto(arg0: string, isBarcode = false) {
+    if (arg0.length < 2) return;
+    this.ListaProductosByCategoriasSelected = [];
+    this.__ws.getListaProductosPublicByNombre(arg0).subscribe(
+      (res: any) => {
+        let ResponseFinal = res;
+        if (isBarcode) {
+          ResponseFinal = [];
+          ResponseFinal.push(res[0]);
+        }
+        ResponseFinal.forEach((element: any) => {
+          element.dataCarrito = {
+            count: 0,
+          };
+          this.ListaProductosByCategoriasSelected.push(element);
+          this.categoriaSelected.name = element.catName;
+        });
+      },
+      (err) => {
+        alert(err);
+      },
+      () => {}
+    );
+  }
+
+  listClientes: any[] = [];
+  private obntenerListaClientes() {
+    this.__ws.getListaClientes('EC001').subscribe(
+      (res: any) => {
+        this.listClientes = res;
+        // this.ListaCategoriasPadre.forEach((item: any) => {
+        //   // item['isCheckedItem'] = false;
+        //   item.id_categoria = 'CATP_' + item['id_categoria'];
+        //   item['ListaCategoriasHijos'] = [];
+        //   this.obntenerListaCategoriasHijos(item);
+        //   // this.obntenerListaCategoriasHijos(item);
+        // });
+      },
+      (err) => {
+        alert(err);
+      },
+      () => {}
+    );
   }
 }
 

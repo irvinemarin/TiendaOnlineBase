@@ -89,3 +89,7 @@ h5 {
 .bg-dark {
   color: white !important;
 }
+
+.row {
+  margin: 0 !important;
+}

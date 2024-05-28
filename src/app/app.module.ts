@@ -26,6 +26,8 @@ import { IEMAcordionComponent } from './pages/StoreV2/partials/iem-acordion/iem-
 import { LandingComponent } from './validador-dni/layouts/landing/landing.component';
 import { NavCustomComponent } from './validador-dni/layouts/partials/nav-custom/nav-custom.component';
 import { AsideLeftComponent } from './validador-dni/layouts/partials/aside-left/aside-left.component';
+import { CardsListProductsComponent } from './pages/StoreV2/partials/cards-list-products/cards-list-products.component';
+import { HorizontalListProductosComponent } from './pages/StoreV2/partials/horizontal-list-productos/horizontal-list-productos.component';
 
 registerLocaleData(es);
 
@@ -47,6 +49,8 @@ registerLocaleData(es);
     LandingComponent,
     NavCustomComponent,
     AsideLeftComponent,
+    CardsListProductsComponent,
+    HorizontalListProductosComponent,
   ],
   imports: [
     HttpClientModule,
